@@ -22,3 +22,16 @@ angular.module('PJAKApp', ['ionic', 'PJAKApp.controllers', 'PJAKApp.services'])
     }
   });
 })
+
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+  .state('homeState', {
+      url: "/homeUrl",
+      templateUrl: 'templates/home.html'
+  })
+  .state('shoppingListState',{
+     url: "/settingsUrl",
+     templateUrl: "templates/settings.html"
+   });
+    $urlRouterProvider.otherwise('/homeUrl');
+});

@@ -1,0 +1,11 @@
+<ion-view ng-controller="NasaController">
+  <ion-header-bar><a ng-href="#/settingsUrl">Settings</a><h1 class="title">Nasa Picture of the Day</h1></ion-header-bar>
+  <ion-content>
+    <div style="background:lightblue">
+      <p style="color:blue">{{nasaInfo.title}}</p>
+      <p style="color:blue">{{nasaInfo.date}}</p>
+      <p>{{nasaInfo.explanation}}</p>
+      <img src={{nasaInfo.url}}></img>
+    </div>
+  </ion-content>
+</ion-view>
