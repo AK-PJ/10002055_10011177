@@ -1,11 +1,13 @@
 <ion-view ng-controller="NasaController">
   <ion-header-bar><a ng-href="#/settingsUrl">Settings</a><h1 class="title">Nasa Picture of the Day</h1></ion-header-bar>
   <ion-content>
+    <div ng-repeat="pics in NasaInfoArr" >
     <div style="background:lightblue">
-      <p style="color:blue">{{nasaInfo.title}}</p>
-      <p style="color:blue">{{nasaInfo.date}}</p>
-      <p>{{nasaInfo.explanation}}</p>
-      <img src={{nasaInfo.url}}></img>
+        <p style="color:blue">{{pics.title}}</p>
+        <p style="color:blue">{{pics.date}}</p>
+        <p>{{pics.explanation}}</p>
+        <img src={{pics.url}}></img>
+      </div>
     </div>
   </ion-content>
 </ion-view>
