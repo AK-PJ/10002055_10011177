@@ -6,7 +6,8 @@
         <p style="color:blue">{{pics.title}}</p>
         <p style="color:blue">{{pics.date}}</p>
         <p>{{pics.explanation}}</p>
-        <img src={{pics.url}}></img>
+        <img ng-if="img" src="{{pics.url}}"></img>
+        <iframe ng-if="video" src="{{pics.url}}"></iframe>
       </div>
     </div>
   </ion-content>
