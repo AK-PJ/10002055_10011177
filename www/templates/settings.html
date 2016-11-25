@@ -1,8 +1,10 @@
 <ion-view ng-controller="SettingsCTRL">
-  <ion-header-bar><a ng-href="#/homeUrl">Nasa Picture of the Day</a><h1 class="title">Settings (Selected Value = {{data.clientSide}})</h1></ion-header-bar>
+  <ion-header-bar><a ng-href="#/homeUrl">Nasa Picture of the Day</a><h1 class="title">Settings (Selected Value = {{data.dateMod}})</h1></ion-header-bar>
   <ion-content>
     <ion-list>
-      <ion-radio ng-repeat="item in clientSideList" ng-value="item.value" ng-model="data.clientSide" ng-change="noOfDays()"> {{ item.text }}</ion-radio>
+      <ion-radio ng-value=1 ng-model=days ng-change="noOfDays(days)">Today</ion-radio>
+      <ion-radio ng-value=7 ng-model=days ng-change="noOfDays(days)">Last 7 Days</ion-radio>
+      <ion-radio ng-value=14 ng-model=days ng-change="noOfDays(days)">Last 14 Days</ion-radio>
     </ion-list>
   </ion-content>
 </ion-view>
