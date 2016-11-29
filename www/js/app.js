@@ -34,5 +34,5 @@ angular.module('PJAKApp', ['ionic', 'PJAKApp.controllers', 'PJAKApp.services'])
      url: "/settingsUrl",
      templateUrl: "templates/settings.html"
    });
-    $urlRouterProvider.otherwise('/homeUrl'); 
+    $urlRouterProvider.otherwise('/homeUrl');
 });

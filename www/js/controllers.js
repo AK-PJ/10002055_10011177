@@ -1,5 +1,8 @@
 angular.module('PJAKApp.controllers', [])
 .controller('NasaController', function($scope, settingsService, NasaInfoService) {
+  settingsService.setDays("1");
+  $scope.days = settingsService.getDays();
+
 
   $scope.$on('$ionicView.beforeEnter', function() {
     $scope.NasaInfoArr = [];
@@ -10,15 +13,9 @@ angular.module('PJAKApp.controllers', [])
 
     function responseOK(responseData) {
       $scope.NasaInfoArr.push(responseData);
-      for (var i = 0; i<$scope.NasaInfoArr.length; i++){
-        if ($scope.NasaInfoArr[i].media_type === "image") {
-          $scope.img = true;
-          $scope.video = false;
-        } else {
-          $scope.img = false;
-          $scope.video = true;
-        }
-    }
+      $scope.NasaInfoArr.sort(function (a,b) {
+        return new Date(b.date) - new Date(a.date);
+      });
   }
 
     function responseNOK(errorStatus, errorStatusText) {
