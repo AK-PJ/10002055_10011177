@@ -22,7 +22,14 @@ angular.module('PJAKApp', ['ionic', 'PJAKApp.controllers', 'PJAKApp.services'])
     }
   });
 })
-
+/*This function will allow urls to be passed from untrusted sources. i.e. YouTube.
+it is recommended not to use this for live applicaitons*/
+.config(function($sceProvider) {
+  // Completely disable SCE.  For demonstration purposes only!
+  // Do not use in new projects.
+  $sceProvider.enabled(false);
+})
+/*sets the states for the applicaiton. homeUrl being the default*/
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('homeState', {

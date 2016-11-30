@@ -1,31 +1,33 @@
 angular.module('PJAKApp.controllers', [])
 .controller('NasaController', function($scope, settingsService, NasaInfoService) {
+  //sets default to "1" to initialize the project. So that on startup the project shows at least 1 image.
   settingsService.setDays("1");
   $scope.days = settingsService.getDays();
 
-
+//$scope.on and ionicView.beforeEnter are built in to Angular to allow the controller to pick up settings
+//from a service/controller that is in a previous state.
   $scope.$on('$ionicView.beforeEnter', function() {
     $scope.NasaInfoArr = [];
-    var days = settingsService.getDays();
-    var dates = NasaInfoService.getDate(days);
-    var urlArr = NasaInfoService.getURLArr(dates);
-    NasaInfoService.getPicOfDay(urlArr, responseOK, responseNOK);
+    var days = settingsService.getDays(); //get number of days
+    var dates = NasaInfoService.getDate(days); //get dates depending no selected(1,7,14)
+    var urlArr = NasaInfoService.getURLArr(dates);//get url array
+    NasaInfoService.getPicOfDay(urlArr, responseOK, responseNOK); //calls getPicOfDay function from NasaInfoService
 
     function responseOK(responseData) {
-      $scope.NasaInfoArr.push(responseData);
-      $scope.NasaInfoArr.sort(function (a,b) {
+      $scope.NasaInfoArr.push(responseData); //pushs responseData(object) into array to create an array of objects
+      $scope.NasaInfoArr.sort(function (a,b) { //sorts array by date
         return new Date(b.date) - new Date(a.date);
       });
   }
-
+    //if response from urls fails use this funciton to display error messages.
     function responseNOK(errorStatus, errorStatusText) {
-      alert(errorStatus + " " + errorStatusText);
+      console.log(errorStatus + " " + errorStatusText);
     }
   });
 })
-
+/*SettingsCTRL, Sends number to the service.js depending on the users selection(1,7 or 14)*/
 .controller('SettingsCTRL', function ($scope, settingsService){
-
+  //"On Change" functions to send data to the service function setDays.
   $scope.noOfDays = function(days) {
     settingsService.setDays(days);
   }
@@ -33,8 +35,7 @@ angular.module('PJAKApp.controllers', [])
     $scope.days = settingsService.getDays();
   });
 
-  /*
-*******Old Code**********
+/********Old Code**********
   var selectedValue = value.value;
   console.log(selectedValue);
   //var oneDay = 0;
@@ -71,5 +72,6 @@ SettingsService.setDate(++days);
 $scope.data.dateMod = "14";
 }
 //console.log($scope.data.clientSide);
-//})*/
+//})
+**********End*************/
 })

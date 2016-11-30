@@ -7,7 +7,7 @@
         <p style="color:blue">{{pics.date}}</p>
         <p>{{pics.explanation}}</p>
         <img ng-if="pics.media_type === 'image'" ng-src="{{pics.url}}"></img>
-        <iframe ng-if="pics.media_type === 'video'" ng-src="{{pics.url}}"></iframe>
+        <iframe width=500px height=400px ng-if="pics.media_type === 'video'" ng-src="{{pics.url}}"></iframe>
       </div>
     </div>
   </ion-content>
